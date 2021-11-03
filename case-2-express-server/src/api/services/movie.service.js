@@ -14,8 +14,17 @@ function searchMovies(params) {
   });
 }
 
-function getDetailMovie() {
-  return;
+function getDetailMovie(params) {
+  const { id } = params;
+  return new Promise((resolve, reject) => {
+    fetch(`http://www.omdbapi.com/?apikey=${APIKEY}&i=${id}`)
+      .then((response) => {
+        resolve(response.json());
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 module.exports = {

@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { searchMovies } = require("../movie.service");
+const { searchMovies, getDetailMovie } = require("../movie.service");
 
 describe("Check movie service", () => {
   it("Search movie returns movies", () => {
@@ -17,6 +17,17 @@ describe("Check movie service", () => {
       });
   });
   it("Detail movie returns a movie detail", () => {
-    expect(true).to.be.true;
+    const id = "tt4853102";
+    getDetailMovie({
+      id: id,
+    })
+      .then((result) => {
+        expect(result).to.include({
+          imdbID: id,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   });
 });
