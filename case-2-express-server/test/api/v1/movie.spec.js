@@ -1,4 +1,3 @@
-const { expect } = require("chai");
 const request = require("supertest");
 const createServer = require("../../../src/server");
 const { API } = require("../../../src/constants");
