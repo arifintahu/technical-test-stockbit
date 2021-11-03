@@ -1,29 +1,32 @@
-function findFirstStringInBracket(str) {
-  if (str.length > 0) {
-    let indexFirstBracketFound = str.indexOf("(");
-    if (indexFirstBracketFound >= 0) {
-      let wordsAfterFirstBracket = str.substr(indexFirstBracketFound);
-      if (wordsAfterFirstBracket) {
-        wordsAfterFirstBracket = wordsAfterFirstBracket.substr(1);
-        let indexClosingBracketFound = wordsAfterFirstBracket.indexOf(")");
-        if (indexClosingBracketFound >= 0) {
-          return wordsAfterFirstBracket.substring(
-            0,
-            indexClosingBracketFound
-          );
-        } else {
-          return "";
-        }
-      } else {
-        return "";
-      }
-    } else {
-      return "";
-    }
-  } else {
+function findWordsAfterFirstBracket(text) {
+  const indexFirstBracketFound = text.indexOf("(");
+  if (indexFirstBracketFound == -1) {
     return "";
   }
+  const wordsFirstBracketFound = text.substr(indexFirstBracketFound);
+  if (!wordsFirstBracketFound) {
+    return "";
+  }
+  return wordsFirstBracketFound.substr(1);
 }
 
-const result = findFirstStringInBracket("welcome (home)");
-console.log(result);
+function findWordsBeforeLastBracket(text) {
+  const indexClosingBracketFound = text.indexOf(")");
+  if (indexClosingBracketFound == -1) {
+    return "";
+  }
+  return text.substr(0, indexClosingBracketFound);
+}
+
+function findFirstStringInBracket(str) {
+  if (!str.length) {
+    return "";
+  }
+  const wordsAfterFirstBracket = findWordsAfterFirstBracket(str);
+  if (!wordsAfterFirstBracket) {
+    return "";
+  }
+  return findWordsBeforeLastBracket(wordsAfterFirstBracket);
+}
+
+module.exports = findFirstStringInBracket;
