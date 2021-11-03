@@ -2,9 +2,9 @@ const fetch = require("node-fetch");
 const { APIKEY } = require("../../constants");
 
 function searchMovies(params) {
-  const { search, page } = params;
+  const { key, page } = params;
   return new Promise((resolve, reject) => {
-    fetch(`http://www.omdbapi.com/?apikey=${APIKEY}&s=${search}&page=${page}`)
+    fetch(`http://www.omdbapi.com/?apikey=${APIKEY}&s=${key}&page=${page}`)
       .then((response) => {
         resolve(response.json());
       })

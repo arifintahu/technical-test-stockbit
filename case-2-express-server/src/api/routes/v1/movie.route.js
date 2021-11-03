@@ -1,12 +1,13 @@
 const { Router } = require("express");
+const { movieController } = require("../../controllers");
 
 const router = Router();
 
 router.get("/search", (req, res) => {
-  res.sendStatus(200);
+  movieController.searchMovies(req, res);
 });
-router.get("/detail", (req, res) => {
-  res.sendStatus(200);
+router.get("/detail/:id", (req, res) => {
+  movieController.getDetailMovie(req, res);
 });
 
 module.exports = router;

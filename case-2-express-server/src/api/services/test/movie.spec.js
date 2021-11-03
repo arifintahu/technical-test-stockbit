@@ -4,7 +4,7 @@ const { searchMovies, getDetailMovie } = require("../movie.service");
 describe("Check movie service", () => {
   it("Search movie returns movies", () => {
     searchMovies({
-      search: "Batman",
+      key: "Batman",
       page: 2,
     })
       .then((result) => {
