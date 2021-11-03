@@ -12,8 +12,14 @@ describe("Check movie routes", () => {
       .get(`/${API}/movie/search?key=${key}&page=${page}`)
       .expect(200, done);
   });
+  it("Search movie gives error 400 if no query", (done) => {
+    request(app).get(`/${API}/movie/search`).expect(400, done);
+  });
   it("Detail movie gives result without errror", (done) => {
     const id = "tt4853102";
     request(app).get(`/${API}/movie/detail/${id}`).expect(200, done);
+  });
+  it("Detail movie gives error 404 if no params id]", (done) => {
+    request(app).get(`/${API}/movie/detail`).expect(404, done);
   });
 });
