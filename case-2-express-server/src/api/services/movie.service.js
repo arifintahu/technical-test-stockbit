@@ -1,10 +1,10 @@
 const fetch = require("node-fetch");
-const { APIKEY } = require("../../constants");
+const { OMDB_KEY, OMDB_API } = require("../../constants");
 
 function searchMovies(params) {
   const { key, page } = params;
   return new Promise((resolve, reject) => {
-    fetch(`http://www.omdbapi.com/?apikey=${APIKEY}&s=${key}&page=${page}`)
+    fetch(`${OMDB_API}/?apikey=${OMDB_KEY}&s=${key}&page=${page}`)
       .then((response) => {
         resolve(response.json());
       })
@@ -17,7 +17,7 @@ function searchMovies(params) {
 function getDetailMovie(params) {
   const { id } = params;
   return new Promise((resolve, reject) => {
-    fetch(`http://www.omdbapi.com/?apikey=${APIKEY}&i=${id}`)
+    fetch(`${OMDB_API}/?apikey=${OMDB_KEY}&i=${id}`)
       .then((response) => {
         resolve(response.json());
       })
