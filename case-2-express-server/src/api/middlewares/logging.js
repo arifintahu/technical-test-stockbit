@@ -1,6 +1,13 @@
+const { logRepository } = require("../repositories");
 function logging(req, res, next) {
-  console.log("Request URL:", req.originalUrl);
-  next();
+  logRepository
+    .createLog({
+      method: req.method,
+      endpoint: req.originalUrl,
+    })
+    .then(() => {
+      next();
+    });
 }
 
 module.exports = logging;
