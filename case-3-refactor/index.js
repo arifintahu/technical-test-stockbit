@@ -3,11 +3,7 @@ function findWordsAfterFirstBracket(text) {
   if (indexFirstBracketFound == -1) {
     return "";
   }
-  const wordsFirstBracketFound = text.substr(indexFirstBracketFound);
-  if (!wordsFirstBracketFound) {
-    return "";
-  }
-  return wordsFirstBracketFound.substr(1);
+  return text.substr(indexFirstBracketFound + 1);
 }
 
 function findWordsBeforeLastBracket(text) {
@@ -18,6 +14,7 @@ function findWordsBeforeLastBracket(text) {
   return text.substr(0, indexClosingBracketFound);
 }
 
+// main function
 function findFirstStringInBracket(str) {
   if (!str.length) {
     return "";
