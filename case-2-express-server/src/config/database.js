@@ -1,5 +1,6 @@
 const mysql = require("mysql");
-const connection = mysql.createConnection("mysql://root@localhost/test");
+const { DB_URL } = require("../constants");
+const connection = mysql.createConnection(DB_URL);
 
 function initialize() {
   return new Promise((resolve, reject) => {
