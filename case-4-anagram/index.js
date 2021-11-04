@@ -3,11 +3,7 @@ function anagram(input) {
   let setUnique = {};
 
   for (let word of input) {
-    const arrayChar = [];
-    for (let char of word) {
-      arrayChar.push(char);
-    }
-    let wordTransformed = arrayChar.sort().join("");
+    let wordTransformed = word.split("").sort().join("");
     if (setUnique[wordTransformed] == undefined) {
       let indexArray = output.length;
       setUnique[wordTransformed] = indexArray;
