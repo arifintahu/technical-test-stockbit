@@ -54,26 +54,33 @@ DB_URL=mysql://{username}:{password}@{host}/{database}
 #### 7. You can access API with this address
 
 ```bash
-# GET search movie
+# Search movie
+# GET /api/v1/movie/search?key={string}&page={number}
+# Query {key} : searching keyword
+# Query {page}: pagination number
 curl -i 'localhost:3001/api/v1/movie/search?key=Batman&page=1'
 
-# GET detail movie
+# Detail movie
+# GET /api/v1/movie/detail/:id
+# Params {id} : imdbID
 curl -i 'localhost:3001/api/v1/movie/detail/tt4853102'
 
-# GET logs
+# Show logs
+# GET /api/v1/log
 curl -i 'localhost:3001/api/v1/log'
 ```
 
 #### 8. You can also run the API with this remote server
 
 ```bash
+# Example
 # GET search movie
 curl -i 'https://movie-search-arifintahu.herokuapp.com/api/v1/movie/search?key=Batman&page=1'
 
 # GET detail movie
 curl -i 'https://movie-search-arifintahu.herokuapp.com/api/v1/movie/detail/tt4853102'
 
-# GET logs
+# GET show logs
 curl -i 'https://movie-search-arifintahu.herokuapp.com/api/v1/log'
 ```
 <br />
